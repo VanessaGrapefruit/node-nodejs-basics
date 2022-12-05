@@ -1,5 +1,15 @@
+import { existsSync, readFile } from "fs";
+
 const read = async () => {
-    // Write your code here 
+    const file = 'files/fileToRead.txt';
+
+	if (!existsSync(file)) {
+		throw new Error('FS operation failed');
+	}
+
+	readFile(file, null, (_, data) => {
+		console.log(data.toString());
+	})
 };
 
 await read();
